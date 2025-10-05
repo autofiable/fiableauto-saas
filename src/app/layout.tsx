@@ -1,34 +1,31 @@
-export const metadata = {
-  title: "FiableAuto — Dashboard",
-  description: "Gestion des inspections (Prototype SaaS by Sylvain)",
-};
-
+// src/app/layout.tsx
+import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "FiableAuto — Dashboard",
+  description: "SaaS FiableAuto (démo)",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body>
-        <header className="appbar">
-          <div className="appbar-inner container">
-            <a className="brand" href="/">
-              <div className="logo" />
-              <div>
-                <div className="title">FiableAuto</div>
-                <div className="kbd">Dashboard</div>
-              </div>
-            </a>
-
-            <div style={{display:"flex", gap:8}}>
-              <a className="btn ghost" href="/">Tableau de bord</a>
-              {/* plus tard: /inspections, /missions, /parametres */}
+        <header className="container">
+          <nav className="nav">
+            {/* Utiliser Link pour toute navigation interne */}
+            <Link href="/" className="brand">
+              FiableAuto
+            </Link>
+            <div className="nav-right">
+              <Link href="/" className="nav-link">Tableau de bord</Link>
+              {/* Ajoute d’autres liens internes ici avec <Link href="/chemin"> */}
             </div>
-          </div>
+          </nav>
         </header>
 
-        <main className="container" style={{paddingTop:20}}>
-          {children}
-        </main>
+        <main className="container">{children}</main>
       </body>
     </html>
   );
